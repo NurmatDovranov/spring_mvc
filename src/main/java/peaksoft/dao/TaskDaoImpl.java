@@ -17,26 +17,28 @@ public class TaskDaoImpl implements TaskDao{
 
     @Override
     public List<Task> getAllTasks() {
-        return null;
+
+        List<Task> tasks = entityManager.createQuery("from Task", Task.class).getResultList();
+        return tasks;
     }
 
     @Override
     public void addTask(Task task) {
-
+    entityManager.persist(task);
     }
 
     @Override
     public Task getTaskById(Long id) {
-        return null;
+        return entityManager.find(Task.class, id);
     }
 
     @Override
     public void updateTask(Task task) {
-
+    entityManager.merge(task);
     }
 
     @Override
     public void deleteTask(Task task) {
-
+    entityManager.remove(entityManager.contains(task) ? task : entityManager.merge(task));
     }
 }

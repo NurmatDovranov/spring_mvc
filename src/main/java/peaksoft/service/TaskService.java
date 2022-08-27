@@ -1,12 +1,10 @@
-package peaksoft.dao;
-
+package peaksoft.service;
 
 import peaksoft.entity.Task;
 
 import java.util.List;
 
-public interface TaskDao {
-
+public interface TaskService {
     List<Task> getAllTasks();
     void addTask(Task task);
     Task getTaskById(Long id);
